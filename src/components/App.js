@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Nav from "./Nav";
+import NewQuestion from "./NewQuestion";
 import PollCard from "./PollCard";
 import PollCardQuestion from "./PollCardQuestion";
 import QuestionList from "./QuestionList";
@@ -18,8 +19,9 @@ class App extends Component {
       <div className="App">
         <Nav />
         <div className="container">
-          <QuestionList />
+          {/* <QuestionList /> */}
           {/* <PollCardQuestion /> */}
+          <NewQuestion />
         </div>
       </div>
     );
