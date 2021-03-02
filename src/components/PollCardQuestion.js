@@ -14,7 +14,7 @@ function PollCardQuestion() {
             />
           </div>
           <div className="right">
-            <div>Would you rather</div>
+            <h4>Would you rather</h4>
             <div>
               <input type="radio" name="select" />be a front-end developer
             </div>

@@ -63,9 +63,66 @@
         padding: 0 10px;
         border-left: 1px solid lightgray;
         
+        h4 {
+          margin: 10px 0;
+        }
         button {
           width: 100%;
           margin-top: 10px;
+        }
+
+        .optionContainer {
+          position: relative;
+          border: 1px solid lightgray;
+          border-radius: 5px;
+          margin: 5px 0;
+          padding: 10px;
+          
+
+          >div {
+            margin: 5px 0;
+            text-align: center;
+
+            &:first-child {
+              text-align: left;
+            }
+            &:last-child {
+              background-color: #E8BF22;
+              display: none;
+              position: absolute;
+              top: -15px;
+              right: -15px;
+              width: 30px;
+              height: 30px;
+
+              border-radius: 50%;
+
+              >p {
+                margin: 0;
+                padding: 0;
+                color: white;
+                font-size: x-small;
+              }
+            }
+          }
+        }
+
+        .voted {
+          background-color: #E5F9FA;
+          border: 1px solid green;
+
+          >div {
+            &:first-child {
+              color: #39C4B0;
+            }
+            &:last-child {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              
+            }
+          }
         }
       }
     }
