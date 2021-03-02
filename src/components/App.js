@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import LeaderBoard from "./LeaderBoard";
 import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
@@ -18,16 +19,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Nav />
-        <div className="container">
-          {/* <QuestionList /> */}
-          {/* <PollCardQuestion /> */}
-          {/* <NewQuestion /> */}
-          {/* <LeaderBoard /> */}
-          <SignIn />
+      <BrowserRouter>
+        <div className="App">
+          <Nav />
+          <div className="container">
+            <Route path="/" exact component={QuestionList} />
+            <Route path="/new" component={NewQuestion} />
+            <Route path="/board" component={LeaderBoard} />
+            <Route path="/card/:id" component={PollCardQuestion} />
+            {/* <SignIn /> */}
+          </div>
         </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
