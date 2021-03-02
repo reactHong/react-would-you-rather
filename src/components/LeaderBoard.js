@@ -1,8 +1,11 @@
+import LeaderBoardItem from './LeaderBoardItem';
 
 function LeaderBoard() {
-
   return (
-    <div></div>
+    <>
+      <LeaderBoardItem />
+      <LeaderBoardItem />
+    </>
   );
 }
 
