@@ -20,8 +20,8 @@ export const handleInitData = () => (dispatch) => {
     API._getQuestions(),
   ])    
   .then(([users, questions]) => {
-    dispatch(receiveQuestions(questions));
     dispatch(receiveUsers(users));
+    dispatch(receiveQuestions(questions));
   })
   .catch(error => {
 

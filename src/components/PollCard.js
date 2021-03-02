@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
 
-function PollCard({ id }) {
+function PollCard({ question, user }) {
   return (
     <div className="cardContainer">
-      <div className="header"> asks:</div>
+      <div className="header">{user.name} asks:</div>
       <div className="body">
         <div className="contentContainer">
           <div className="left">
             <img 
-              src={"http://localhost:3000/profile1.jpg"} 
-              alt="Profile Image"
+              src={user.avatarURL} 
+              alt={`${user.name} profile image`}
             />
           </div>
           <div className="right">
             <div>Would you rather</div>
-            <div>..a..</div>
+            <div>{question.title}</div>
             <div>
               <button>View Poll</button>
             </div>
@@ -25,10 +25,15 @@ function PollCard({ id }) {
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
 
+  const question = questions ? questions[id] : null;
+  const user = users ? users[question.author] : null;
   
-  return {};
+  return {
+    question,
+    user,
+  };
 };
 
 export default connect(mapStateToProps)(PollCard);
