@@ -14,14 +14,16 @@ const receiveUsers = (users) => ({
 });
 
 
-export const handleInitData = () => (dispatch) => {
+export const handleInitData = (callback) => (dispatch) => {
   return Promise.all([
     API._getUsers(),
     API._getQuestions(),
-  ])    
+  ])
   .then(([users, questions]) => {
+    console.log("[handleInitData]", users, questions);
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
+    callback();
   })
   .catch(error => {
 

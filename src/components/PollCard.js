@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function PollCard({ question, user }) {
   return (
@@ -16,7 +17,7 @@ function PollCard({ question, user }) {
             <div>Would you rather</div>
             <div>{question.title}</div>
             <div>
-              <button>View Poll</button>
+              <NavLink to={`/card/${question.id}`}>View Poll</NavLink>
             </div>
           </div>
         </div>

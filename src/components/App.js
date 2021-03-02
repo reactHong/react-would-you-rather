@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import LeaderBoard from "./LeaderBoard";
 import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
-import PollCard from "./PollCard";
-import PollCardQuestion from "./PollCardQuestion";
+import PollCardDetail from "./PollCardDetail";
 import QuestionList from "./QuestionList";
 import SignIn from "./SignIn";
 
@@ -17,8 +16,16 @@ import * as API from "../_DATA";
 
 class App extends Component {
 
+  state = {
+    loading: true,
+  };
+
   componentDidMount() {
-    this.props.dispatch(handleInitData());
+    this.props.dispatch(handleInitData(() => {
+      this.setState({
+        loading: false,
+      })
+    }));
   }
 
   render() {
@@ -27,11 +34,16 @@ class App extends Component {
         <div className="App">
           <Nav />
           <div className="container">
-            <Route path="/" exact component={QuestionList} />
-            <Route path="/new" component={NewQuestion} />
-            <Route path="/board" component={LeaderBoard} />
-            <Route path="/card/:id" component={PollCardQuestion} />
-            {/* <SignIn /> */}
+            {this.state.loading === true 
+              ? <div>Loading...</div> 
+              : <>
+                  <Route path="/" exact component={QuestionList} />
+                  <Route path="/new" component={NewQuestion} /> 
+                  <Route path="/board" component={LeaderBoard} />
+                  <Route path="/card/:id" component={PollCardDetail} />
+                  {/* <SignIn /> */}
+                </>
+            }
           </div>
         </div>
       </BrowserRouter>

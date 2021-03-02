@@ -1,5 +1,5 @@
 
-export default function authedUser(state = "", action) {
+export default function authedUser(state = "sarahedo", action) {
   switch(action.type) {
     default:
       return state;
