@@ -1,9 +1,9 @@
+import { connect } from 'react-redux';
 
-function PollCard() {
-
+function PollCard({ id }) {
   return (
     <div className="cardContainer">
-      <div className="header">Sarah Edo asks:</div>
+      <div className="header"> asks:</div>
       <div className="body">
         <div className="contentContainer">
           <div className="left">
@@ -25,4 +25,10 @@ function PollCard() {
   );
 }
 
-export default PollCard;
+const mapStateToProps = (state) => {
+
+  
+  return {};
+};
+
+export default connect(mapStateToProps)(PollCard);

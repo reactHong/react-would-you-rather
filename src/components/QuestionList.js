@@ -1,7 +1,7 @@
+import { connect } from "react-redux";
 import PollCard from "./PollCard";
 
-function QuestionList() {
-
+function QuestionList({ questions }) {
   return (
     <div className="listContainer">
       <div className="tabContainer">
@@ -9,11 +9,19 @@ function QuestionList() {
         <div>Answered Questions</div>
       </div>
       <div className="cardsContainer">
-        <PollCard />
-        <PollCard />
+        {Object.values(questions).map(question => (
+          <PollCard 
+            key={question.id} 
+            id={question.id} 
+          />
+        ))}
       </div>
     </div>
   );
 }
 
-export default QuestionList;
+const mapStateToProps = (state) => ({
+  questions: state.questions,
+});
+
+export default connect(mapStateToProps)(QuestionList);

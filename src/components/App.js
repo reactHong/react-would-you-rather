@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
+import { connect } from "react-redux";
+
 import LeaderBoard from "./LeaderBoard";
 import Nav from "./Nav";
 import NewQuestion from "./NewQuestion";
@@ -8,13 +10,15 @@ import PollCardQuestion from "./PollCardQuestion";
 import QuestionList from "./QuestionList";
 import SignIn from "./SignIn";
 
+import { handleInitData } from "../actions/shared";
+import * as API from "../_DATA";
+
+
+
 class App extends Component {
 
   componentDidMount() {
-
-    //TODO: Load questions, users, authedUser
-
-
+    this.props.dispatch(handleInitData());
   }
 
   render() {
@@ -35,4 +39,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+
+});
+
+export default connect(mapStateToProps)(App);
