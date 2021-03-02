@@ -5,6 +5,7 @@ import NewQuestion from "./NewQuestion";
 import PollCard from "./PollCard";
 import PollCardQuestion from "./PollCardQuestion";
 import QuestionList from "./QuestionList";
+import SignIn from "./SignIn";
 
 class App extends Component {
 
@@ -23,7 +24,8 @@ class App extends Component {
           {/* <QuestionList /> */}
           {/* <PollCardQuestion /> */}
           {/* <NewQuestion /> */}
-          <LeaderBoard />
+          {/* <LeaderBoard /> */}
+          <SignIn />
         </div>
       </div>
     );

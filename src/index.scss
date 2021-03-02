@@ -121,10 +121,8 @@
 
 .boardItemContainer {
   border: 1px solid lightgray;
-  // height: 120px;
   margin: 10px 0;
   
-
   .innerContainer {
     display: flex;
     align-items: center;
@@ -223,4 +221,29 @@
   }
 }
 
+.signInContainer {
+  border: 1px solid lightgray;
+  margin: 10px 0;
 
+  >div:first-child {
+    background-color: rgb(240, 240, 240);
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+
+    h4, div {
+      text-align: center;
+      margin: 3px 0;
+    }
+  }
+  >div:last-child {
+    padding: 0 10px;
+
+    h3, div {
+      text-align: center;
+      margin: 10px 0;
+    }
+    select, button {
+      width: 100%;
+    }
+  }
+}
