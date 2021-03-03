@@ -21,10 +21,25 @@
   .tabContainer {
     display: flex;
     border-bottom: 1px solid lightgray;
-  
+    
     >div {
       width: 50%;
       text-align: center;
+      padding: 10px;
+      cursor: pointer;
+
+      &:first-child {
+        border-right: 1px solid lightgray;
+      }
+
+      &:hover {
+        background-color: rgb(230, 230, 230);
+      }
+    }
+
+    .selected {
+      background-color: rgb(240, 240, 240);
+      color: #39C4B0;
     }
   }  
 }

@@ -2,6 +2,7 @@ import * as API from '../_DATA';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const RECEIVE_USERS = "RECEIVE_USERS";
+export const SET_QUESTIONLIST_TABINDEX = "SET_QUESTIONLIST_TABINDEX";
 
 const receiveQuestions = (questions) => ({
   type: RECEIVE_QUESTIONS,
@@ -13,6 +14,10 @@ const receiveUsers = (users) => ({
   users,
 });
 
+export const setTabIndex = (index) => ({
+  type: SET_QUESTIONLIST_TABINDEX,
+  index,
+});
 
 export const handleInitData = (callback) => (dispatch) => {
   return Promise.all([
@@ -20,7 +25,6 @@ export const handleInitData = (callback) => (dispatch) => {
     API._getQuestions(),
   ])
   .then(([users, questions]) => {
-    console.log("[handleInitData]", users, questions);
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
     callback();
