@@ -1,12 +1,19 @@
+import { connect } from 'react-redux';
 import LeaderBoardItem from './LeaderBoardItem';
 
-function LeaderBoard() {
+
+function LeaderBoard({ users }) {
   return (
     <>
-      <LeaderBoardItem />
-      <LeaderBoardItem />
+      {Object.values(users).map(user => (
+        <LeaderBoardItem key={user.id} user={user} />
+      ))}
     </>
   );
 }
 
-export default LeaderBoard;
+const mapStateToProps = ({ users }) => ({
+  users,
+});
+
+export default connect(mapStateToProps)(LeaderBoard);

@@ -1,29 +1,39 @@
-function LeaderBoardItem() {
+function LeaderBoardItem({ user }) {
+
+  const {
+    name,
+    avatarURL,
+    answers,
+    questions,
+  } = user;
+  const answerCount = Object.values(answers).length;
+  const questionCount = questions.length;
+
   return (
     <div className="boardItemContainer">
       <div className="innerContainer">
         <div className="left">
           <div className="imgContainer">
-            <img src="http://localhost:3000/profile4.jpg" />
+            <img src={avatarURL} />
           </div>
           <div></div>
         </div>
         <div className="middle">
-          <h4>Sarah Edo</h4>
+          <h4>{name}</h4>
           <div>
             <div>Answered questions</div>
-            <div>7</div>
+            <div>{answerCount}</div>
           </div>
           <div>
             <div>Created questions</div>
-            <div>3</div>
+            <div>{questionCount}</div>
           </div>
         </div>
         <div className="right">
           <div className="table">
             <div>Score</div>
             <div>
-              <div>10</div>
+              <div>{answerCount + questionCount}</div>
             </div>
           </div>
         </div>
