@@ -6,8 +6,8 @@ function PollCardDetail({ question, answered }) {
   return(
     <>
       {answered
-        ? <PollCardResult />
-        : <PollCardQuestion />
+        ? <PollCardResult question={question} />
+        : <PollCardQuestion question={question} />
       }
     </>
   );
