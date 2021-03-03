@@ -15,7 +15,7 @@ function PollCard({ question, user }) {
           </div>
           <div className="right">
             <div>Would you rather</div>
-            <div>{question.title}</div>
+            <div>{`..${question.title}..`}</div>
             <div>
               <NavLink to={`/card/${question.id}`}>View Poll</NavLink>
             </div>

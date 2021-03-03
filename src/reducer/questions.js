@@ -1,4 +1,4 @@
-import { ANSWER_QUESTION } from "../actions/questions";
+import { ADD_QUESTION, ANSWER_QUESTION } from "../actions/questions";
 import { RECEIVE_QUESTIONS } from "../actions/shared";
  
 const questions = (state = {}, action) => {
@@ -13,6 +13,11 @@ const questions = (state = {}, action) => {
             votes: state[action.qid][action.answer].votes.concat(action.authedUser),
           }
         }
+      };
+    case ADD_QUESTION:
+      return {
+        ...state,
+        [action.question.id]: action.question,
       };
     case RECEIVE_QUESTIONS:
       return action.questions;
