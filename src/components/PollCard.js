@@ -10,7 +10,7 @@ function PollCard({ question, user }) {
           <div className="left">
             <img 
               src={user.avatarURL} 
-              alt={`${user.name} profile image`}
+              alt={`${user.name} profile`}
             />
           </div>
           <div className="right">

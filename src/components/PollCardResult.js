@@ -22,7 +22,7 @@ function PollCardResult(props) {
           <div className="left">
             <img 
               src={avatarURL} 
-              alt="Profile Image"
+              alt={`${authorName} profile`}
             />
           </div>
           <div className="right">
