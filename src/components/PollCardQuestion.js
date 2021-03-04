@@ -18,17 +18,12 @@ function PollCardQuestion(props) {
   } = props;
 
   const handleChangeValue = (e) => {
-    // e.preventDefault();
-
-    console.log("[PollCardQuestion.handleChangeValue] e.target.value:", e.target.value);
-
     setAnswer(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("[PollCardQuestion.handleSubmit] answer:", answer);
     props.dispatch(handleVote({
       authedUser,
       qid: questionId,
@@ -37,7 +32,6 @@ function PollCardQuestion(props) {
 
     setIsAnswered(true);
   };
-  console.log("[PollCardQuestion] answer:", answer);
 
   if (isAnswered) {
     return <Redirect to={`/card/${questionId}`} />
@@ -77,9 +71,6 @@ function PollCardQuestion(props) {
               <br />
               <button type="submit">Submit</button>
             </form>
-            {/* <div>
-              <button onClick={handleSubmit}>Submit</button>
-            </div> */}
           </div>
         </div>
       </div>

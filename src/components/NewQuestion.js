@@ -24,8 +24,6 @@ function NewQuestion(props) {
     setToHome(true);
   };
 
-  console.log("[NewQuestion] render");
-
   if (toHome) {
     return <Redirect to="/" />
   }
