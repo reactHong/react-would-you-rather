@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { connect } from "react-redux";
 import { setTabIndex } from "../actions/shared";
 import PollCard from "./PollCard";
@@ -23,6 +22,7 @@ function QuestionList(props) {
     switch (tabIndex) {
       case 0:   return !answered1 && !answered2;
       case 1:   return answered1 || answered2;
+      case 2:   return question.author === authedUser;
       default:  return !answered1 && !answered2;
     }
   });
@@ -41,6 +41,12 @@ function QuestionList(props) {
           onClick={() => handleTabIndex(1)}
         >
           Answered Questions
+        </div>
+        <div
+          className={(tabIndex === 2) ? "selected" : ""}
+          onClick={() => handleTabIndex(2)}
+        >
+          My Questions
         </div>
       </div>
       <div className="cardsContainer">
