@@ -10,9 +10,6 @@ import QuestionList from "./QuestionList";
 import SignIn from "./SignIn";
 
 import { handleInitData } from "../actions/shared";
-import * as API from "../_DATA";
-
-
 
 class App extends Component {
 
@@ -29,21 +26,31 @@ class App extends Component {
   }
 
   render() {
+
+    console.log("############ [App.render]");
+    console.log("############ [App.render] authedUser:", this.props.authedUser);
+
+    let container;
+
+    if (!this.props.authedUser) {
+      container = <SignIn />
+    } else {
+      container = (this.state.loading === true)
+        ? <div>Loading...</div> 
+        : <>
+            <Route path="/" exact component={QuestionList} />
+            <Route path="/new" component={NewQuestion} /> 
+            <Route path="/board" component={LeaderBoard} />
+            <Route path="/card/:id" component={PollCardDetail} />
+          </>
+    }
+
     return (
       <BrowserRouter>
         <div className="App">
           <Nav />
           <div className="container">
-            {this.state.loading === true 
-              ? <div>Loading...</div> 
-              : <>
-                  <Route path="/" exact component={QuestionList} />
-                  <Route path="/new" component={NewQuestion} /> 
-                  <Route path="/board" component={LeaderBoard} />
-                  <Route path="/card/:id" component={PollCardDetail} />
-                  {/* <SignIn /> */}
-                </>
-            }
+            {container}
           </div>
         </div>
       </BrowserRouter>
@@ -51,8 +58,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
 });
 
 export default connect(mapStateToProps)(App);

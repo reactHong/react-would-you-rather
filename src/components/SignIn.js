@@ -1,5 +1,39 @@
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { signIn } from '../actions/authedUser';
 
-function SignIn() {
+function SignIn({ users, dispatch }) {
+
+  const [userId, setUserId] = useState("");
+  const [toHome, setToHome] = useState(false);
+
+  const handleChangeUser = (e) => {
+    (e.target.selectedIndex === 0)
+      ? setUserId("")
+      : setUserId(e.target.value);
+  };
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    if (userId) {
+      dispatch(signIn(userId));
+      setToHome(true);
+    }
+  };
+
+  if (toHome) {
+    return <Redirect to="/" />
+  }
+
+  const usersArray = Object.values(users);
+  const optionUsers = usersArray.map(user => (
+    <option 
+      key={user.id} 
+      value={user.id}
+    >{user.name}</option>
+  ));
 
   return (
     <div className="signInContainer">
@@ -10,18 +44,26 @@ function SignIn() {
       <div>
         <h3>Sign in</h3>
         <div>
-          <select>
-            <option>Sarah Edo</option>
-            <option>Tyler McGinnis</option>
-            <option>John Doe</option>
-          </select>
+          {usersArray.length === 0 
+            ? <select>
+                <option>Loading...</option>
+              </select>
+            : <select onChange={handleChangeUser}>
+                <option>Select User</option> 
+                {optionUsers}
+              </select>
+          }
         </div>
         <div>
-          <button>Sign In</button>
+          <button onClick={handleSignIn}>Sign In</button>
         </div>
       </div>
     </div>
   );
 }
 
-export default SignIn;
+const mapStateToProps = ({ users }) => ({
+  users,
+});
+
+export default connect(mapStateToProps)(SignIn);
