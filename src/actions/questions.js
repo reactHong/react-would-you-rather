@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import * as API from '../_DATA';
 
 export const ANSWER_QUESTION = "ANSWEER_QUESTION";
@@ -16,16 +17,20 @@ const addQuestion = (question) => ({
 });
 
 export const handleVote = ({ authedUser, qid, answer }) => (dispatch) => {
+  dispatch(showLoading());
   return API._saveQuestionAnswer({ authedUser, qid, answer })
     .then(() => {
       dispatch(answerQuestion(authedUser, qid, answer));
+      dispatch(hideLoading());
     });
 };
 
 export const handleAddQuestion = (question) => (dispatch) => {
+  dispatch(showLoading());
   return API._saveQuestion(question)
     .then((question) => {
       dispatch(addQuestion(question));
+      dispatch(hideLoading());
     });
 };
 

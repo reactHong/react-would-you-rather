@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import LoadingBar from "react-redux-loading-bar";
 
 import LeaderBoard from "./LeaderBoard";
 import Nav from "./Nav";
@@ -13,16 +14,8 @@ import { handleInitData } from "../actions/shared";
 
 class App extends Component {
 
-  state = {
-    loading: true,
-  };
-
   componentDidMount() {
-    this.props.dispatch(handleInitData(() => {
-      this.setState({
-        loading: false,
-      })
-    }));
+    this.props.dispatch(handleInitData());
   }
 
   render() {
@@ -30,29 +23,24 @@ class App extends Component {
     console.log("############ [App.render]");
     console.log("############ [App.render] authedUser:", this.props.authedUser);
 
-    let container;
-
-    if (!this.props.authedUser) {
-      container = <SignIn />
-    } else {
-      container = (this.state.loading === true)
-        ? <div>Loading...</div> 
-        : <>
-            <Route path="/" exact component={QuestionList} />
-            <Route path="/new" component={NewQuestion} /> 
-            <Route path="/board" component={LeaderBoard} />
-            <Route path="/card/:id" component={PollCardDetail} />
-          </>
-    }
-
     return (
       <BrowserRouter>
-        <div className="App">
-          <Nav />
-          <div className="container">
-            {container}
+        <>
+          <LoadingBar />
+          <div className="App">
+            <Nav />
+            <div className="container">
+              {this.props.authedUser 
+              ? <>
+                  <Route path="/" exact component={QuestionList} />
+                  <Route path="/new" component={NewQuestion} /> 
+                  <Route path="/board" component={LeaderBoard} />
+                  <Route path="/card/:id" component={PollCardDetail} />
+                </>
+              : <SignIn />}
+            </div>
           </div>
-        </div>
+        </>
       </BrowserRouter>
     );
   }

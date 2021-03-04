@@ -1,3 +1,4 @@
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import * as API from '../_DATA';
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
@@ -19,7 +20,10 @@ export const setTabIndex = (index) => ({
   index,
 });
 
-export const handleInitData = (callback) => (dispatch) => {
+export const handleInitData = () => (dispatch) => {
+  
+  dispatch(showLoading());
+
   return Promise.all([
     API._getUsers(),
     API._getQuestions(),
@@ -27,7 +31,7 @@ export const handleInitData = (callback) => (dispatch) => {
   .then(([users, questions]) => {
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
-    callback();
+    dispatch(hideLoading());
   })
   .catch(error => {
 
