@@ -14,7 +14,7 @@ function LeaderBoardItem({ user }) {
       <div className="innerContainer">
         <div className="left">
           <div className="imgContainer">
-            <img src={avatarURL} />
+            <img src={avatarURL} alt={`${name} profile`}/>
           </div>
           <div></div>
         </div>
