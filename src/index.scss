@@ -28,6 +28,16 @@ button {
     &:hover {
       background-color: #39C4B0;
     }
+
+    >div {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 
   .signout {

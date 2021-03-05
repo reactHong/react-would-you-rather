@@ -23,7 +23,12 @@ function Nav({ userName, avatarURL, dispatch }) {
       </li>
       {userName && (
         <>
-          <li>{userName}</li>
+          <li>
+            <div>
+              <img src={avatarURL} alt={`${userName} profile`} />&nbsp;
+              Hello, {userName}
+            </div>
+          </li>
           <li
             className="signout"
             onClick={handleSignout}
