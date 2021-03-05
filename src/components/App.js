@@ -9,6 +9,7 @@ import NewQuestion from "./NewQuestion";
 import PollCardDetail from "./PollCardDetail";
 import QuestionList from "./QuestionList";
 import SignIn from "./SignIn";
+import Page404 from "./Page404";
 
 import { handleInitData } from "../actions/shared";
 
@@ -39,6 +40,7 @@ class App extends Component {
                   <Route path="/new" component={NewQuestion} /> 
                   <Route path="/board" component={LeaderBoard} />
                   <Route path="/card/:id" component={PollCardDetail} />
+                  <Route component={Page404} />
                 </Switch>
               }
               {loading && <div>Loading...</div>}
