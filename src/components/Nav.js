@@ -12,18 +12,21 @@ function Nav({ userName, avatarURL, dispatch }) {
 
   return (
     <ul className="nav">
-      <li>
-        <NavLink to="/" activeClassName="active">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/new" activeClassName="active">New Question</NavLink>
-      </li>
-      <li>
-        <NavLink to="/board" activeClassName="active">LeaderBoard</NavLink>
-      </li>
+      <div>
+        <li>
+          <NavLink to="/" activeClassName="active">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/new" activeClassName="active">New Question</NavLink>
+        </li>
+        <li>
+          <NavLink to="/board" activeClassName="active">LeaderBoard</NavLink>
+        </li>
+      </div>
+      
       {userName && (
-        <>
-          <li>
+        <div>
+          <li className="user">
             <div>
               <img src={avatarURL} alt={`${userName} profile`} />&nbsp;
               Hello, {userName}
@@ -33,7 +36,7 @@ function Nav({ userName, avatarURL, dispatch }) {
             className="signout"
             onClick={handleSignout}
           >Sign Out</li>
-        </>
+        </div>
       )}
     </ul>
   );
