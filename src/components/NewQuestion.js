@@ -1,23 +1,36 @@
 import { connect } from "react-redux";
-import { useRef, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
+
+const reducer = (state = {}, action) => {
+  return {
+    ...state,
+    [action.name]: action.value,
+  }
+};
 
 function NewQuestion(props) {
 
   const [toHome, setToHome] = useState(false);
-  const titleRef = useRef();
-  const optionOneRef = useRef();
-  const optionTwoRef = useRef();
+  const [state, dispatch] = useReducer(reducer, {
+    title: "",
+    optionOneText: "",
+    optionTwoText: "",
+  });
+  const { title, optionOneText, optionTwoText } = state;
 
+  const handleChange = (e) => {
+    dispatch(e.target);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     
     const newQuestion = {
       author: props.authedUser,
-      title: titleRef.current.value,
-      optionOneText: optionOneRef.current.value,
-      optionTwoText: optionTwoRef.current.value,
+      title,
+      optionOneText,
+      optionTwoText,
     };
     props.dispatch(handleAddQuestion(newQuestion));
 
@@ -37,16 +50,18 @@ function NewQuestion(props) {
           <strong>Would you rather</strong>
           <input 
             type="text"
+            name="title"
             placeholder="Enter the title"
-            ref={titleRef}
+            onChange={handleChange}
           />
           <strong>?</strong>
         </div>
         <div>
           <input 
             type="text" 
+            name="optionOneText"
             placeholder="Enter Option One Text Here"
-            ref={optionOneRef}
+            onChange={handleChange}
           />
         </div>
         <div className="divider">
@@ -56,9 +71,10 @@ function NewQuestion(props) {
         </div>
         <div>
           <input 
-            type="text" 
+            type="text"
+            name="optionTwoText"
             placeholder="Enter Option Two Text Here"
-            ref={optionTwoRef}
+            onChange={handleChange}
           />
         </div>
         <div>
