@@ -26,6 +26,7 @@ function QuestionList(props) {
       default:  return !answered1 && !answered2;
     }
   });
+  const sortedQuestions = filteredQuestions.sort((q1, q2) => q2.timestamp - q1.timestamp);
 
   return (
     <div className="listContainer">
@@ -50,7 +51,7 @@ function QuestionList(props) {
         </div>
       </div>
       <div className="cardsContainer">
-        {filteredQuestions.map(question => (
+        {sortedQuestions.map(question => (
           <PollCard 
             key={question.id} 
             id={question.id} 
