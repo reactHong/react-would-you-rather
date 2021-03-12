@@ -2,8 +2,15 @@ import { connect } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { setTabIndex } from "../actions/shared";
 import PollCard from "./PollCard";
+import { useLoading } from '@agney/react-loading';
 
 function QuestionList(props) {
+  const { containerProps, indicatorEl } = useLoading({
+    loading: true,
+    loaderProps: {
+      style: { color: '#39C4B0' }
+    },
+  });
 
   const { 
     authedUser, 
@@ -62,7 +69,7 @@ function QuestionList(props) {
             ))
           : <div className="noCardsContainer">
               {loading 
-                ? <div>Loading...</div>
+                ? <section {...containerProps}>{indicatorEl}</section>
                 : <>
                     <div>There is no questions.</div>
                     <div><NavLink to="/new">Please add a new question.</NavLink></div>

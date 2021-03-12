@@ -1,9 +1,15 @@
 import { connect } from 'react-redux';
 import LeaderBoardItem from './LeaderBoardItem';
+import { useLoading } from "@agney/react-loading";
 
-
-function LeaderBoard({ users }) {
-
+function LeaderBoard({ users, loadingBar }) {
+  const { containerProps, indicatorEl } = useLoading({
+    loading: true,
+    loaderProps: {
+      style: { color: '#39C4B0' }
+    },
+  });
+  const loading = loadingBar.default ? loadingBar.default : false;
   const sortedUsers = Object.values(users);
 
   sortedUsers.sort((user1, user2) => {
@@ -15,16 +21,20 @@ function LeaderBoard({ users }) {
   });
 
   return (
-    <>
-      {sortedUsers.map(user => (
-        <LeaderBoardItem key={user.id} user={user} />
-      ))}
-    </>
+    <div className="boardContainer">
+      {loading
+        ? <section {...containerProps}>{indicatorEl}</section>
+        : sortedUsers.map(user => (
+            <LeaderBoardItem key={user.id} user={user} />
+          ))
+      }
+    </div>
   );
 }
 
-const mapStateToProps = ({ users }) => ({
+const mapStateToProps = ({ users, loadingBar }) => ({
   users,
+  loadingBar,
 });
 
 export default connect(mapStateToProps)(LeaderBoard);

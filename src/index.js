@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Circles, LoaderProvider } from '@agney/react-loading';
 import reducer from './reducer';
 import middleware from './middleware';
 import App from './components/App';
@@ -17,7 +18,9 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={pStore}>
-        <App />
+        <LoaderProvider indicator={<Circles width="50" />}>
+          <App />
+        </LoaderProvider>
       </PersistGate>
     </Provider>
   </React.StrictMode>,
