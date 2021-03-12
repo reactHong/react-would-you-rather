@@ -43,7 +43,7 @@ class App extends Component {
                   <Route component={Page404} />
                 </Switch>
               }
-              {loading && <div>Loading...</div>}
+              {/* {loading && <div>Loading...</div>} */}
               {!authedUser && <SignIn />}
             </div>
           </div>

@@ -25,12 +25,13 @@ export const handleVote = ({ authedUser, qid, answer }) => (dispatch) => {
     });
 };
 
-export const handleAddQuestion = (question) => (dispatch) => {
+export const handleAddQuestion = (question, callback) => (dispatch) => {
   dispatch(showLoading());
   return API._saveQuestion(question)
     .then((question) => {
       dispatch(addQuestion(question));
       dispatch(hideLoading());
+      callback();
     });
 };
 

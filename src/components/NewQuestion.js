@@ -32,9 +32,9 @@ function NewQuestion(props) {
       optionOneText,
       optionTwoText,
     };
-    props.dispatch(handleAddQuestion(newQuestion));
-
-    setToHome(true);
+    props.dispatch(handleAddQuestion(newQuestion, () => {
+      setToHome(true);
+    }));
   };
 
   if (toHome) {

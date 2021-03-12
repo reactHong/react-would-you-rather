@@ -114,7 +114,20 @@ button {
       background-color: rgb(240, 240, 240);
       color: #39C4B0;
     }
-  }  
+  }
+
+  .cardsContainer {
+    .noCardsContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 300px;
+      padding: 20px;
+      >div {
+        text-align: center;
+      }
+    }
+  }
 }
 
 .cardContainer {

@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { NavLink } from 'react-router-dom';
 import { setTabIndex } from "../actions/shared";
 import PollCard from "./PollCard";
 
@@ -8,13 +9,10 @@ function QuestionList(props) {
     authedUser, 
     questions, 
     tabIndex,
+    loadingBar,
     dispatch,
   } = props;
-
-  const handleTabIndex = (index) => {
-    dispatch(setTabIndex(index));
-  };
-
+  const loading = loadingBar.default ? loadingBar.default : false;
   const filteredQuestions = Object.values(questions).filter(question => {
     const answered1 = question.optionOne.votes.includes(authedUser);
     const answered2 = question.optionTwo.votes.includes(authedUser);
@@ -27,6 +25,10 @@ function QuestionList(props) {
     }
   });
   const sortedQuestions = filteredQuestions.sort((q1, q2) => q2.timestamp - q1.timestamp);
+
+  const handleTabIndex = (index) => {
+    dispatch(setTabIndex(index));
+  };
 
   return (
     <div className="listContainer">
@@ -51,12 +53,23 @@ function QuestionList(props) {
         </div>
       </div>
       <div className="cardsContainer">
-        {sortedQuestions.map(question => (
-          <PollCard 
-            key={question.id} 
-            id={question.id} 
-          />
-        ))}
+        {sortedQuestions.length > 0
+          ? sortedQuestions.map(question => (
+              <PollCard 
+                key={question.id} 
+                id={question.id} 
+              />
+            ))
+          : <div className="noCardsContainer">
+              {loading 
+                ? <div>Loading...</div>
+                : <>
+                    <div>There is no questions.</div>
+                    <div><NavLink to="/new">Please add a new question.</NavLink></div>
+                  </>
+              }
+            </div>
+        }
       </div>
     </div>
   );
@@ -66,6 +79,7 @@ const mapStateToProps = (state) => ({
   authedUser: state.authedUser,
   questions: state.questions,
   tabIndex: state.preference.qListTabIndex,
+  loadingBar: state.loadingBar,
 });
 
 export default connect(mapStateToProps)(QuestionList);
