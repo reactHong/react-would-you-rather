@@ -12,7 +12,7 @@ function Nav({ userName, avatarURL, dispatch }) {
 
   return (
     <ul className="nav">
-      <div>
+      <div className="leftContainer">
         <li>
           <NavLink to="/" activeClassName="active">Home</NavLink>
         </li>
@@ -25,7 +25,7 @@ function Nav({ userName, avatarURL, dispatch }) {
       </div>
       
       {userName && (
-        <div>
+        <div className="rightContainer">
           <li className="user">
             <div>
               <img src={avatarURL} alt={`${userName} profile`} />&nbsp;

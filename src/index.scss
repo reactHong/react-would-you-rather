@@ -18,7 +18,7 @@ button {
   // background-color: yellow;
   border-bottom: 3px solid #39C4B0;
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   list-style: none;
   padding: 0;
   // height: 50px;
@@ -26,14 +26,20 @@ button {
   >div {
     display: flex;
     
-    &:first-child, &:last-child {
+    &.leftContainer {
       flex: 1;
-      justify-content: center;
+      justify-content: flex-start;
+      margin-left: 1%;
+    }
+    &.rightContainer {
+      flex: 1;
+      justify-content: flex-end;
+      margin-right: 1%;
     }
 
     li {
       // background-color: yellowgreen;
-      padding: 10px 20px;
+      padding: 10px;
   
       display: flex;
       justify-content: center;
