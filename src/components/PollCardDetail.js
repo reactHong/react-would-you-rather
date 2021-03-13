@@ -1,8 +1,14 @@
 import { connect } from "react-redux";
+import Page404 from "./Page404";
 import PollCardQuestion from "./PollCardQuestion";
 import PollCardResult from "./PollCardResult";
 
 function PollCardDetail({ question, answered }) {
+
+  if (!question || !answered) {
+    return <Page404 />
+  }
+
   return(
     <>
       {answered
