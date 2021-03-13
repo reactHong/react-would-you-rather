@@ -21,13 +21,13 @@ function QuestionList(props) {
   } = props;
   const loading = loadingBar.default ? loadingBar.default : false;
   const filteredQuestions = Object.values(questions).filter(question => {
-    const answered1 = question.optionOne.votes.includes(authedUser);
-    const answered2 = question.optionTwo.votes.includes(authedUser);
+    const answered1 = question.optionOne.votes.includes(authedUser.id);
+    const answered2 = question.optionTwo.votes.includes(authedUser.id);
 
     switch (tabIndex) {
       case 0:   return !answered1 && !answered2;
       case 1:   return answered1 || answered2;
-      case 2:   return question.author === authedUser;
+      case 2:   return question.author === authedUser.id;
       default:  return !answered1 && !answered2;
     }
   });
@@ -43,20 +43,17 @@ function QuestionList(props) {
         <div 
           className={(!tabIndex) ? "selected" : ""}
           onClick={() => handleTabIndex(0)}
-        >
-          Unanswered Questions
+        >Unanswered Questions
         </div>
         <div
           className={(tabIndex === 1) ? "selected" : ""}
           onClick={() => handleTabIndex(1)}
-        >
-          Answered Questions
+        >Answered Questions
         </div>
         <div
           className={(tabIndex === 2) ? "selected" : ""}
           onClick={() => handleTabIndex(2)}
-        >
-          My Questions
+        >My Questions
         </div>
       </div>
       <div className="cardsContainer">

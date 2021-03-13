@@ -13,6 +13,7 @@ import Page404 from "./Page404";
 import LoadingComponent from "./LoadingComponent";
 
 import { handleInitData } from "../actions/shared";
+import { isEmptyObj } from "../utils/helpers";
 
 function App(props) {
   const { authedUser, loadingBar } = props;
@@ -28,7 +29,7 @@ function App(props) {
   console.log("############ [App.render] loadingBar.default:", loadingBar.default);
   console.log("############ [App.render] loading:", loading);
 
-  const component = (!authedUser) 
+  const component = (isEmptyObj(authedUser))
     ? <SignIn />
     : (loading)
       ? <LoadingComponent />

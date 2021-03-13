@@ -6,10 +6,10 @@ const users = (state = {}, action) => {
     case ANSWER_QUESTION:
       return {
         ...state,
-        [action.authedUser]: {
-          ...state[action.authedUser],
+        [action.authedUserId]: {
+          ...state[action.authedUserId],
           answers: {
-            ...state[action.authedUser].answers,
+            ...state[action.authedUserId].answers,
             [action.qid]: action.answer,
           }
         }

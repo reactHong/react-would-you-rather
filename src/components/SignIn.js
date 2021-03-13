@@ -17,8 +17,9 @@ function SignIn({ users, dispatch }) {
   const handleSignIn = (e) => {
     e.preventDefault();
 
-    if (userId) {
-      dispatch(signIn(userId));
+    const user = users[userId];
+    if (user) {
+      dispatch(signIn(user));
       setToHome(true);
     }
   };

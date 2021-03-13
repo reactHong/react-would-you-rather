@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { signOut } from '../actions/authedUser';
+import { isEmptyObj } from '../utils/helpers';
 
-function Nav({ userName, avatarURL, dispatch }) {
+function Nav({ authedUser, dispatch }) {
 
   console.log("############ [Nav.render] ");
 
@@ -24,12 +25,12 @@ function Nav({ userName, avatarURL, dispatch }) {
         </li>
       </div>
       
-      {userName && (
+      {!isEmptyObj(authedUser) && (
         <div className="rightContainer">
           <li className="user">
             <div>
-              <img src={avatarURL} alt={`${userName} profile`} />&nbsp;
-              Hello, {userName}
+              <img src={authedUser.avatarURL} alt={`${authedUser.name} profile`} />&nbsp;
+              Hello,&nbsp;<strong>{authedUser.name}</strong>
             </div>
           </li>
           <li
@@ -42,14 +43,8 @@ function Nav({ userName, avatarURL, dispatch }) {
   );
 }
 
-const mapStateToProps = ({ authedUser, users }) => {
-  
-  const user = users[authedUser];
-
-  return {
-    userName: user ? user.name : "",
-    avatarURL: user? user.avatarURL : "",
-  }
-};
+const mapStateToProps = ({ authedUser }) => ({
+  authedUser,
+});
 
 export default connect(mapStateToProps)(Nav);

@@ -90,8 +90,8 @@ function PollCardResult(props) {
 const mapStateToProps = ({ authedUser, users }, { question }) => {
 
   const author = users[question.author];
-  const votedNum = question.optionOne.votes.includes(authedUser) ? 0 
-                    : question.optionTwo.votes.includes(authedUser) ? 1
+  const votedNum = question.optionOne.votes.includes(authedUser.id) ? 0 
+                    : question.optionTwo.votes.includes(authedUser.id) ? 1
                     : null;
 
   if (votedNum === null) {

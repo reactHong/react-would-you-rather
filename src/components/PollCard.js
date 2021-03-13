@@ -26,7 +26,7 @@ function PollCard({ question, user }) {
   );
 }
 
-const mapStateToProps = ({ authedUser, questions, users }, { id }) => {
+const mapStateToProps = ({ questions, users }, { id }) => {
 
   const question = questions ? questions[id] : null;
   const user = users ? users[question.author] : null;

@@ -27,7 +27,7 @@ function NewQuestion(props) {
     e.preventDefault();
     
     const newQuestion = {
-      author: props.authedUser,
+      author: props.authedUser.id,
       title,
       optionOneText,
       optionTwoText,

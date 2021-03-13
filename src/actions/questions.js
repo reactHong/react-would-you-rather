@@ -4,9 +4,9 @@ import * as API from '../_DATA';
 export const ANSWER_QUESTION = "ANSWEER_QUESTION";
 export const ADD_QUESTION = "ADD_QUESTION";
 
-const answerQuestion = (authedUser, qid, answer) => ({
+const answerQuestion = (authedUserId, qid, answer) => ({
   type: ANSWER_QUESTION,
-  authedUser,
+  authedUserId,
   qid,
   answer,
 });
@@ -16,11 +16,11 @@ const addQuestion = (question) => ({
   question,
 });
 
-export const handleVote = ({ authedUser, qid, answer }) => (dispatch) => {
+export const handleVote = ({ authedUserId, qid, answer }) => (dispatch) => {
   dispatch(showLoading());
-  return API._saveQuestionAnswer({ authedUser, qid, answer })
+  return API._saveQuestionAnswer({ authedUserId, qid, answer })
     .then(() => {
-      dispatch(answerQuestion(authedUser, qid, answer));
+      dispatch(answerQuestion(authedUserId, qid, answer));
       dispatch(hideLoading());
     });
 };

@@ -25,7 +25,7 @@ function PollCardQuestion(props) {
     e.preventDefault();
 
     props.dispatch(handleVote({
-      authedUser,
+      authedUserId: authedUser.id,
       qid: questionId,
       answer: answer,
     }));

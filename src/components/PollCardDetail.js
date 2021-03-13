@@ -14,11 +14,12 @@ function PollCardDetail({ question, answered }) {
 }
 
 const mapStateToProps = ({ authedUser, questions }, props) => {
-
   const { id } = props.match.params;
   const question = questions[id];
-  const answered = question.optionOne.votes.includes(authedUser) 
-                || question.optionTwo.votes.includes(authedUser);
+  const answered = (question) 
+    ? question.optionOne.votes.includes(authedUser.id) 
+      || question.optionTwo.votes.includes(authedUser.id)
+    : undefined;
   return {
     question,
     answered,
