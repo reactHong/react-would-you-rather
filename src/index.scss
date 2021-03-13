@@ -180,16 +180,20 @@ button {
           border-radius: 5px;
           margin: 5px 0;
           padding: 10px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           
           >div {
             margin: 5px 0;
             text-align: center;
 
             &:first-child {
-              text-align: left;
+              font-weight: bold;
             }
             &:last-child {
-              background-color: #e8c022dc;
+              background-color: #f96363dc;
               display: none;
               position: absolute;
               top: -25px;
@@ -206,6 +210,11 @@ button {
                 font-size: small;
               }
             }
+          }
+
+          .progressBar {
+            width: 80px;
+            margin: 10px 0;
           }
         }
 
