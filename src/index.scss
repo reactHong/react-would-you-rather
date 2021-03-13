@@ -81,8 +81,14 @@ button {
 }
 
 .container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
+}
+
+.loadingContainer {
+  height: 300px;
+  display: flex;
+  justify-content: center;
 }
 
 .listContainer {

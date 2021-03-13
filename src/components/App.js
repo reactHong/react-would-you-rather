@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading-bar";
@@ -10,46 +10,45 @@ import PollCardDetail from "./PollCardDetail";
 import QuestionList from "./QuestionList";
 import SignIn from "./SignIn";
 import Page404 from "./Page404";
+import LoadingComponent from "./LoadingComponent";
 
 import { handleInitData } from "../actions/shared";
 
-class App extends Component {
+function App(props) {
+  const { authedUser, loadingBar } = props;
+  const loading = (loadingBar.default === undefined) 
+    ? true : loadingBar.default;
 
-  componentDidMount() {
-    this.props.dispatch(handleInitData());
-  }
+  useEffect(() => {
+    props.dispatch(handleInitData());
+  }, [props.dispatch]);
 
-  render() {
-    const { authedUser, loadingBar } = this.props;
-    const loading = loadingBar.default ? loadingBar.default : false;
+  console.log("############ [App.render] (1 == true)", (1 == true));
+  console.log("############ [App.render] authedUser:", authedUser);
+  console.log("############ [App.render] loadingBar.default:", loadingBar.default);
+  console.log("############ [App.render] loading:", loading);
 
-    console.log("############ [App.render]");
-    console.log("############ [App.render] authedUser:", authedUser);
-    console.log("############ [App.render] loading:", loading);
+  const component = (!authedUser) 
+    ? <SignIn />
+    : (loading)
+      ? <LoadingComponent />
+      : <Switch>
+          <Route path="/" exact component={QuestionList} />
+          <Route path="/new" component={NewQuestion} /> 
+          <Route path="/board" component={LeaderBoard} />
+          <Route path="/card/:id" component={PollCardDetail} />
+          <Route component={Page404} />
+        </Switch>
 
-    return (
-      <BrowserRouter>
-        <>
-          <LoadingBar />
-          <div className="App">
-            <Nav />
-            <div className="container">
-              {authedUser && 
-                <Switch>
-                  <Route path="/" exact component={QuestionList} />
-                  <Route path="/new" component={NewQuestion} /> 
-                  <Route path="/board" component={LeaderBoard} />
-                  <Route path="/card/:id" component={PollCardDetail} />
-                  <Route component={Page404} />
-                </Switch>
-              }
-              {!authedUser && <SignIn />}
-            </div>
-          </div>
-        </>
-      </BrowserRouter>
-    );
-  }
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <LoadingBar />
+        <Nav />
+        <div className="container">{component}</div>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 const mapStateToProps = ({ authedUser, loadingBar }) => ({
