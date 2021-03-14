@@ -5,7 +5,7 @@ import PollCardResult from "./PollCardResult";
 
 function PollCardDetail({ question, answered }) {
 
-  if (!question || !answered) {
+  if (question === undefined || answered === undefined) {
     return <Page404 />
   }
 
@@ -26,6 +26,7 @@ const mapStateToProps = ({ authedUser, questions }, props) => {
     ? question.optionOne.votes.includes(authedUser.id) 
       || question.optionTwo.votes.includes(authedUser.id)
     : undefined;
+  
   return {
     question,
     answered,
