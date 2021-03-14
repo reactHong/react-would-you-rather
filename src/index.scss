@@ -105,7 +105,10 @@ button {
     border-bottom: 1px solid lightgray;
     
     >div {
-      width: 50%;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 10px;
       cursor: pointer;
@@ -116,7 +119,6 @@ button {
       &:last-child {
         border-left: 1px solid lightgray;
       }
-
       &:hover {
         background-color: rgb(230, 230, 230);
       }
@@ -205,7 +207,7 @@ button {
               font-weight: bold;
             }
             &:last-child {
-              background-color: #f96363dc;
+              background-color: #edab0fee;
               display: none;
               position: absolute;
               top: -25px;
