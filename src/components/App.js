@@ -31,16 +31,14 @@ function App(props) {
 
   const component = (isEmptyObj(authedUser))
     ? <SignIn />
-    : (loading)
-      ? <LoadingComponent />
-      : <Switch>
-          <Route path="/" exact component={QuestionList} />
-          <Route path="/new" component={NewQuestion} /> 
-          <Route path="/board" component={LeaderBoard} />
-          <Route path="/card/:id" component={PollCardDetail} />
-          <Route component={Page404} />
-        </Switch>
-
+    : <Switch>
+        <Route path="/" exact component={QuestionList} />
+        <Route path="/new" component={NewQuestion} /> 
+        <Route path="/board" component={LeaderBoard} />
+        <Route path="/card/:id" component={PollCardDetail} />
+        <Route component={Page404} />
+      </Switch>
+  
   return (
     <BrowserRouter>
       <div className="App">

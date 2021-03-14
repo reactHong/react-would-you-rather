@@ -3,15 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { setTabIndex } from "../actions/shared";
 import PollCard from "./PollCard";
 import { useLoading } from '@agney/react-loading';
+import { loadingProps } from "../utils/helpers";
 
 function QuestionList(props) {
-  const { containerProps, indicatorEl } = useLoading({
-    loading: true,
-    loaderProps: {
-      style: { color: '#39C4B0' }
-    },
-  });
-
+  const { containerProps, indicatorEl } = useLoading(loadingProps);
   const { 
     authedUser, 
     questions, 

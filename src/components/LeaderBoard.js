@@ -1,14 +1,10 @@
 import { connect } from 'react-redux';
-import LeaderBoardItem from './LeaderBoardItem';
 import { useLoading } from "@agney/react-loading";
+import LeaderBoardItem from './LeaderBoardItem';
+import { loadingProps } from '../utils/helpers';
 
 function LeaderBoard({ users, loadingBar }) {
-  const { containerProps, indicatorEl } = useLoading({
-    loading: true,
-    loaderProps: {
-      style: { color: '#39C4B0' }
-    },
-  });
+  const { containerProps, indicatorEl } = useLoading(loadingProps);
   const loading = loadingBar.default ? loadingBar.default : false;
   const sortedUsers = Object.values(users);
 
