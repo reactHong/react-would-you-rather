@@ -365,6 +365,7 @@ body {
   .boardItemContainer {
     border: 1px solid lightgray;
     margin: 10px 0;
+    position: relative;
     
     .innerContainer {
       display: flex;
@@ -459,6 +460,22 @@ body {
           }
         }
       }
+    }
+
+    .medalContainer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 50px solid rgba(240, 240, 240, 0.5);
+      border-right: 50px solid transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .medal {
+      position: absolute;
+      top: 5px;
+      left: 5px;
     }
   }
 }

@@ -20,8 +20,8 @@ function LeaderBoard({ users, loadingBar }) {
     <div className="boardContainer">
       {loading
         ? <section {...containerProps}>{indicatorEl}</section>
-        : sortedUsers.map(user => (
-            <LeaderBoardItem key={user.id} user={user} />
+        : sortedUsers.map((user, index) => (
+            <LeaderBoardItem key={user.id} user={user} index={index} />
           ))
       }
     </div>

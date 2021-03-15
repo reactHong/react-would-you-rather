@@ -1,4 +1,7 @@
-function LeaderBoardItem({ user }) {
+import { IconContext } from 'react-icons/lib';
+import { RiMedal2Fill } from 'react-icons/ri';
+
+function LeaderBoardItem({ user, index }) {
 
   const {
     name,
@@ -8,6 +11,7 @@ function LeaderBoardItem({ user }) {
   } = user;
   const answerCount = Object.values(answers).length;
   const questionCount = questions.length;
+  const medalsColor = ['gold', 'silver', 'brown'];
 
   return (
     <div className="boardItemContainer">
@@ -16,7 +20,6 @@ function LeaderBoardItem({ user }) {
           <div className="imgContainer">
             <img src={avatarURL} alt={`${name} profile`}/>
           </div>
-          <div></div>
         </div>
         <div className="middle">
           <h4>{name}</h4>
@@ -38,6 +41,13 @@ function LeaderBoardItem({ user }) {
           </div>
         </div>
       </div>
+      <IconContext.Provider value={{ color: medalsColor[index] }}>
+        <div className="medalContainer">
+        </div>
+        <div className="medal">
+            <RiMedal2Fill />
+          </div>
+      </IconContext.Provider>
     </div>
   );
 }
