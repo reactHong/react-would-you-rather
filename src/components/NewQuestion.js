@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useReducer, useRef, useState } from "react";
+import { useReducer, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { handleAddQuestion } from "../actions/questions";
 

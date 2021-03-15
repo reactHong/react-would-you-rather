@@ -4,9 +4,6 @@ import { signOut } from '../actions/authedUser';
 import { isEmptyObj } from '../utils/helpers';
 
 function Nav({ authedUser, dispatch }) {
-
-  console.log("############ [Nav.render] ");
-
   const handleSignout = () => {
     dispatch(signOut());
   };

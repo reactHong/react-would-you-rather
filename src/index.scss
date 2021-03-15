@@ -35,13 +35,10 @@ body {
 }
 
 .nav {
-  // background-color: yellow;
   border-bottom: 3px solid #39C4B0;
   display: flex;
-  // justify-content: space-around;
   list-style: none;
   padding: 0;
-  // height: 50px;
 
   >div {
     display: flex;
@@ -58,18 +55,10 @@ body {
     }
 
     li {
-      // background-color: yellowgreen;
       padding: 10px;
-  
       display: flex;
       justify-content: center;
       align-items: center;
-  
-      // border-bottom: 50px solid white;
-      // border-left: 25px solid transparent;
-      // border-right: 25px solid transparent;
-      // height: 0;
-      // width: 100px;
   
       &:hover {
         background-color: #{$mainColor};
@@ -193,7 +182,6 @@ body {
       }
   
       .right {
-        // background-color: yellowgreen;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;

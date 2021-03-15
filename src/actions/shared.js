@@ -34,6 +34,6 @@ export const handleInitData = () => (dispatch) => {
     dispatch(hideLoading());
   })
   .catch(error => {
-
+    //TODO: Error handling
   });
 };
