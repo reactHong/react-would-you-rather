@@ -27,9 +27,7 @@ $headerGrayColor: rgb(240, 240, 240);
     opacity: 0.9;
   }
 }
-
-
-
+//***********************************//
 body {
   margin: 0;
   padding: 0;
@@ -142,13 +140,14 @@ body {
         border-left: 1px solid lightgray;
       }
       &:hover {
-        background-color: rgb(230, 230, 230);
+        background-color: #{$headerGrayColor};
       }
     }
 
     .selected {
-      background-color: rgb(240, 240, 240);
+      background-color: #{$headerGrayColor};
       color: #{$mainColor};
+      font-weight: bold;
     }
   }
 
@@ -172,7 +171,7 @@ body {
   margin: 10px 10px;
 
   .header {
-    background-color: rgb(240, 240, 240);
+    background-color: #{$headerGrayColor};
     border-bottom: 1px solid lightgray;
     padding: 10px;
   }
@@ -469,7 +468,7 @@ body {
   margin: 10px 0;
 
   >div:first-child {
-    background-color: rgb(240, 240, 240);
+    background-color: #{$headerGrayColor};
     border-bottom: 1px solid lightgray;
     padding: 10px;
 
