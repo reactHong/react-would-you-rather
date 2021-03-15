@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function PollCard({ question, user }) {
   return (
     <div className="cardContainer">
-      <div className="header">{user.name} asks:</div>
+      <div className="header"><strong>{user.name} asks:</strong></div>
       <div className="body">
         <div className="contentContainer">
           <div className="left">
@@ -14,10 +14,12 @@ function PollCard({ question, user }) {
             />
           </div>
           <div className="right">
-            <div>Would you rather</div>
+            <div><strong>Would you rather</strong></div>
             <div>{`..${question.title}..`}</div>
             <div>
-              <NavLink to={`/card/${question.id}`}>View Poll</NavLink>
+              <NavLink to={`/card/${question.id}`}>
+                <button>View Poll</button>
+              </NavLink>
             </div>
           </div>
         </div>

@@ -69,7 +69,7 @@ function PollCardQuestion(props) {
                 onChange={handleChangeValue}
               /><label htmlFor="optionTwo">{optionTwo.text}</label>
               <br />
-              <button type="submit">Submit</button>
+              <button className="submit" type="submit">Submit</button>
             </form>
           </div>
         </div>

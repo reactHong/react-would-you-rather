@@ -1,17 +1,39 @@
+$mainColor: #39C4B0;
+$headerGrayColor: rgb(240, 240, 240);
+
+@mixin whiteButton {
+  background-color: white;
+  color: #{$mainColor};
+  border-radius: 5px;
+  border: 1px solid #{$mainColor};
+  outline: none;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #{$mainColor};
+    color: white;
+  }
+}
+
+@mixin greenButton {
+  background-color: #{$mainColor};
+  color: white;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: Helvetica, sans-serif
-}
-
-button {
-  // background-color: #30A896;
-  // color: white;
-  // border-radius: 5px;
-  // outline: none;
-  // border: none;
-  // padding: 5px;
-  // border-radius: 5px;
 }
 
 .nav {
@@ -52,7 +74,7 @@ button {
       // width: 100px;
   
       &:hover {
-        background-color: #39C4B0;
+        background-color: #{$mainColor};
         transform: perspective(5px) rotateX(2deg);
         transform-origin: bottom;
       }
@@ -126,7 +148,7 @@ button {
 
     .selected {
       background-color: rgb(240, 240, 240);
-      color: #39C4B0;
+      color: #{$mainColor};
     }
   }
 
@@ -185,7 +207,13 @@ button {
         }
         button {
           width: 100%;
+          height: 30px;
           margin-top: 10px;
+          @include whiteButton;
+
+          &.submit {
+            @include greenButton;
+          }
         }
 
         .optionContainer {
@@ -256,6 +284,7 @@ button {
   border: 1px solid lightgray;
 
   h3 {
+    background-color: #{$headerGrayColor};
     border-bottom: 1px solid lightgray;
     text-align: center;
     margin: 0;
@@ -277,7 +306,8 @@ button {
 
     button {
       width: 100%;
-      height: 2.0em;
+      height: 2.5em;
+      @include greenButton;
     }
 
     >div:first-child {
@@ -408,7 +438,7 @@ button {
             align-items: center;
             
             &:first-child {
-              background-color: rgb(240, 240, 240);
+              background-color: #{$headerGrayColor};
               border-bottom: 1px solid lightgray;
               padding: 10px 0;
             }
@@ -457,6 +487,11 @@ button {
     }
     select, button {
       width: 100%;
+    }
+
+    button {
+      height: 30px;
+      @include greenButton;
     }
   }
 }
